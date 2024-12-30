@@ -11,7 +11,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 phi.api=os.getenv("PHI_API_KEY")
-# openai.api_key = os.getenv("OPENAI_API_KEY")
+
 
 web_search_agent= Agent(
     name="Web Search Agent",
