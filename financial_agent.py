@@ -2,6 +2,12 @@ from phi.agent import Agent
 from phi.model.groq import Groq
 from phi.tools.yfinance import YFinanceTools
 from phi.tools.duckduckgo import DuckDuckGo
+import openai
+
+# import os
+# from dotenv import load_dotenv
+# load_dotenv()
+# openai.api_key = os.getenv("OPENAI_API_KEY")
 
 web_search_agent= Agent(
     name="Web Search Agent",
@@ -25,6 +31,7 @@ financial_search_agent= Agent(
 
 multi_search_agent= Agent(
     team=[web_search_agent,financial_search_agent],
+    model=Groq(id="llama3-groq-70b-8192-tool-use-preview"),
     instructions=["Use the web search agent to find the latest information and include sources","Use Tables to display the information"],
     show_tool_calls=True,
     markdown=True,
